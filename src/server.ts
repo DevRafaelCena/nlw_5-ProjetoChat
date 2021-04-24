@@ -1,20 +1,15 @@
 import express from 'express';
 
+import "./database"
+import {routes} from './routes'
+
+
 let port = 2222
 
 
 const app = express();
 
-app.get("/",(request, response)=>{
-    return response.json({msg: "OLA MUNDO NLW"})
-})
-
-
-app.post("/",(request, response)=>{
-
-    //const {nome} = request.body
-    return response.json({msg: `Usuario  cadastrado com sucesso!`})
-})
-
+app.use(express.json())
+app.use(routes)
 
 app.listen(port,()=>{console.log("Server is running on port " + port )})
